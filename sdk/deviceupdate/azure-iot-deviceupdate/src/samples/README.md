@@ -93,7 +93,7 @@ for (BinaryData n: names) {
 Let's enumerate all update version for a given update provider and update name:
 
 ``` java com.azure.iot.deviceupdate.DeviceUpdateClient.EnumerateVersions
-PagedIterable<BinaryData> versions = client.listVersions(updateProvider, updateName, null);
+PagedIterable<BinaryData> versions = client.listVersions(updateProvider, updateName, (RequestOptions) null);
 for (BinaryData v: versions) {
     System.out.println(v);
 }
@@ -161,7 +161,7 @@ for (String fileId: fileIds) {
 To enumerate all registered devices and print their device identifiers:
 
 ``` java com.azure.iot.deviceupdate.DeviceManagementClient.EnumerateDevices
-PagedIterable<BinaryData> devices = client.listDevices(null);
+PagedIterable<BinaryData> devices = client.listDevices((RequestOptions) null);
 for (BinaryData d: devices) {
     System.out.println(new ObjectMapper().readTree(d.toBytes()).get("deviceId").asText());
 }
@@ -172,7 +172,7 @@ for (BinaryData d: devices) {
 To enumerate all available device groups and print their group identifiers:
 
 ``` java com.azure.iot.deviceupdate.DeviceManagementClient.EnumerateGroups
-PagedIterable<BinaryData> groups = client.listGroups(null);
+PagedIterable<BinaryData> groups = client.listGroups((RequestOptions) null);
 for (BinaryData g: groups) {
     System.out.println(new ObjectMapper().readTree(g.toBytes()).get("groupId").asText());
 }
@@ -183,7 +183,7 @@ for (BinaryData g: groups) {
 To enumerate all available device classes and print their device class identifiers:
 
 ``` java com.azure.iot.deviceupdate.DeviceManagementClient.EnumerateDeviceClasses
-PagedIterable<BinaryData> deviceClasses = client.listDeviceClasses(null);
+PagedIterable<BinaryData> deviceClasses = client.listDeviceClasses((RequestOptions) null);
 for (BinaryData dc: deviceClasses) {
     System.out.println(new ObjectMapper().readTree(dc.toBytes()).get("deviceClassId").asText());
 }

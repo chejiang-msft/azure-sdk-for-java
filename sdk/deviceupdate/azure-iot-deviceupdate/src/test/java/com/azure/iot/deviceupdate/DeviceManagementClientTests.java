@@ -8,6 +8,7 @@ import com.azure.core.http.HttpClient;
 import com.azure.core.http.policy.HttpLogDetailLevel;
 import com.azure.core.http.policy.HttpLogOptions;
 import com.azure.core.http.rest.PagedFlux;
+import com.azure.core.http.rest.RequestOptions;
 import com.azure.core.http.rest.Response;
 import com.azure.core.test.TestProxyTestBase;
 import com.azure.core.util.BinaryData;
@@ -43,7 +44,7 @@ public class DeviceManagementClientTests extends TestProxyTestBase {
     @Test
     public void testListDevices() {
         DeviceManagementAsyncClient client = createClient();
-        PagedFlux<BinaryData> response = client.listDevices(null);
+        PagedFlux<BinaryData> response = client.listDevices((RequestOptions) null);
 
         assertNotNull(response);
         assertTrue(response.toStream().count() > 0);
@@ -63,7 +64,7 @@ public class DeviceManagementClientTests extends TestProxyTestBase {
     @Test
     public void testGetGroups() {
         DeviceManagementAsyncClient client = createClient();
-        PagedFlux<BinaryData> response = client.listGroups(null);
+        PagedFlux<BinaryData> response = client.listGroups((RequestOptions) null);
 
         assertNotNull(response);
         assertTrue(response.toStream().count() > 0);
@@ -90,7 +91,7 @@ public class DeviceManagementClientTests extends TestProxyTestBase {
     @Test
     public void testGetDeviceClasses() {
         DeviceManagementAsyncClient client = createClient();
-        PagedFlux<BinaryData> response = client.listDeviceClasses(null);
+        PagedFlux<BinaryData> response = client.listDeviceClasses((RequestOptions) null);
 
         assertNotNull(response);
         assertTrue(response.toStream().count() > 0);
@@ -133,7 +134,7 @@ public class DeviceManagementClientTests extends TestProxyTestBase {
     // @Test
     public void testGetDeploymentsForGroup() {
         DeviceManagementAsyncClient client = createClient();
-        PagedFlux<BinaryData> response = client.listDeploymentsForGroup(TestData.DEVICE_GROUP, null);
+        PagedFlux<BinaryData> response = client.listDeploymentsForGroup(TestData.DEVICE_GROUP, (RequestOptions) null);
 
         assertNotNull(response);
         assertTrue(response.toStream().count() > 0);
@@ -144,7 +145,7 @@ public class DeviceManagementClientTests extends TestProxyTestBase {
         DeviceManagementAsyncClient client = createClient();
 
         try {
-            PagedFlux<BinaryData> response = client.listDeploymentsForGroup("foo", null);
+            PagedFlux<BinaryData> response = client.listDeploymentsForGroup("foo", (RequestOptions) null);
             long count = response.toStream().count();
             fail("NotFound response expected");
         } catch (HttpResponseException e) {

@@ -117,7 +117,7 @@ public class DeviceManagementClientSyncStackTests extends TestProxyTestBase {
     @Test
     public void testListHealthOfDevices() {
         PagedIterable<BinaryData> response =
-            deviceManagementClient.listHealthOfDevices("state eq 'Healthy'", requestOptions);
+            deviceManagementClient.listHealthOfDevices(requestOptions);
         Assertions.assertEquals(200, response.iterableByPage().iterator().next().getStatusCode());
         Assertions.assertTrue(response.stream().findAny().isPresent());
     }
